@@ -1,4 +1,3 @@
-from __future__ import print_function
 import torch
 
 x = torch.empty(5, 3) # 그 시점에 할당된 메모리에 존재하던 값들이 초기값으로 나타남
@@ -46,3 +45,9 @@ print(x.size(), y.size(), z.size())
 x = torch.randn(1)
 print(x)
 print(x.item()) # tensor에 하나의 값만 존재한다면 .item()을 사용하여 숫자 값 얻을 수 있음
+
+# torch tensor를 numpy 배열로 변환
+a = torch.ones(5)
+print(a)
+b = a.numpy()
+print(b)
