@@ -22,10 +22,10 @@ class Net(nn.Module):
 
     def forward(self, x):
         # (2, 2) 크기 윈도우에 대해 맥스 풀링(max pooling)
-        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
+        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2)) # 1,32,32 -> 6,30,30(Conv2d) -> 6,15,15(pool2d)
         # 크기가 제곱수라면 하나의 숫자만을 특정
-        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
-        x = x.view(-1, self.num_flat_features(x))
+        x = F.max_pool2d(F.relu(self.conv2(x)), 2) # 6,15,15 -> 16,13,13(Conv2d) -> 16,6,6(pool2d) (소수 버림)
+        x = x.view(-1, self.num_flat_features(x)) # 1차원으로 변경 16x6x6개의 값
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
