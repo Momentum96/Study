@@ -16,6 +16,8 @@ iris_df = pd.DataFrame(data=iris_data, columns=iris.feature_names) # dataframe �
 iris_df['label'] = iris.target
 print(iris_df.head(3))
 
+print(iris_df.corr())
+
 x_train, x_test, y_train, y_test = train_test_split(iris_data, iris_label, test_size=0.2, random_state=1) # 학습 데이터, 테스트 데이터 분리, feature들을 x, label을 y로, 80% 학습 데이터, 20% 테스트 데이터
 
 dt_clf = DecisionTreeClassifier(random_state=1) # DecisionTreeClassifier 객체 생성
